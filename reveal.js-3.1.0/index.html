@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>API Design Considerations</title>
+
+		<meta name="description" content="A presentation to facilitate discussion of good API design">
+		<meta name="author" content="Brandon Rockhold">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/moon.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>API Design Considerations</h1>
+					<h3>A dicussion of Joshua Bloch's, "How to Design a Good API and Why it Matters"</h3>
+					<p>
+						<small>Created by Brandon Rockhold / <a href="http://twitter.com/brandonrockhold" target="_blank">@brandonrockhold</a></small>
+					</p>
+				</section>
+
+				<section>
+					<h3>Credit &amp; Sources</h3>
+					<ul>
+						<ul>
+							<li>Original Author:
+								<ul>
+									<li>Joshua Bloch / <a href="http://twitter.com/joshbloch" target="_blank">@joshbloch</a></li>
+								</ul>
+							</li>
+							<li>Sources:
+								<ul>
+									<li><a href="https://www.youtube.com/watch?v=aAb7hSCtvGw" target="_blank">Presentation on YouTube</a></li>
+									<li><a href="http://lcsd05.cs.tamu.edu/slides/keynote.pdf" target="_blank">Slides for Presentation</a></li>
+									<li><a href="http://www.infoq.com/articles/API-Design-Joshua-Bloch" target="_blank">Bumper Sticker API Design article</a></li>
+								</ul>
+							</li>
+						</ul>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Presentation Goals</h3>
+					<ul>
+						<li>Cover as many API design "bumper sticker" bullet points as possible during our hour</li>
+						<li>Collaborative discussion of first-hand usage of good and bad APIs (keep it clean...)</li>
+						<li>Raise awareness of and interest in designing good APIs (as opposed to just writing classes and methods)</li>
+				</section>
+
+				<section>
+					<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
+						<h2>Why Does API Design Matter?</h2>
+					</section>
+
+					<section>
+						<h3>All Programmers are API Designers</h3>
+						<ul>
+							<li>Everything we write COULD be reused</li>
+							<li>Much of what we write IS reused
+								<ul>
+									<li>Directly through reusable components</li>
+									<li>Indirectly through design examples (or even copy &amp; paste)</li>
+								</ul>
+							</li>
+							<li>All public-facing code HAS an API whether you consider it as such or not</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>APIs Can Be Among Your Greatest Assets or Liabilities</h3>
+						<ul>
+							<li>Good API design can ease the process of maintaining or enhancing code, allowing us to move faster</li>
+							<li>Bad API design can cause support nightmares, leading to inability to focus on strategic projects and ultimately missed deadlines</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Public APIs are Forever</h3>
+						<ul>
+							<li>Non-passive changes are infrequently a viable option</li>
+							<li>Rewrites are very costly (and also not typically viable) for the API designer as well as for consumers</li>
+							<li>Essentially, only one chance to get the design right</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
+						<h2>Characterstics of Good APIs</h2>
+					</section>
+
+					<section>
+						<h3>They're Just Plain Easy...</h3>
+						<ul>
+							<li>Requires minimal effort to learn how to use</li>
+							<li>Easy to read</li>
+							<li>Easy to use for simple/common scenarios</li>
+							<li>Easy to maintain (by original authors, or their successors)</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Hard to Misuse</h3>
+						<ul>
+							<li>Prevent incorrect usage...
+								<ul>
+									<li>...at compile time through strongly typed arguments and return values, and generics as appropriate</li>
+									<li>...at runtime through usage of exceptions</li>
+								</ul>
+							</li>
+							<li>Examples:
+								<ul>
+									<li>Doesn't allow Object type if it requires something more specific</li>
+									<li>Doesn't permit improper execution order of methods</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+
+					<!-- TODO Pick back up here... -->
+					<section>
+						<h3>Self-Documenting</h3>
+						<ul>
+							<li>Rarely requires documentation</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
+						<h2>API Design Process</h2>
+					</section>
+
+					<section>
+						<h3>Gather API Design Requirements with Skepticism</h3>
+						<ul>
+							<li></li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Structure Requirements as Use-Cases</h3>
+						<ul>
+							<li></li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Early Drafts of APIs Should be Short</h3>
+						<ul>
+							<li></li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Code Use-Cases Against APIs Before Implementing It</h3>
+						<ul>
+							<li></li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Maintain Code for Use-Cases as API Evolves</h3>
+						<ul>
+							<li></li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Example Code Should be Exemplary</h3>
+						<ul>
+							<li></li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>You Can't Please Everyone, So Aim to Displease Everyone Equally</h3>
+						<ul>
+							<li></li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Expect API Design Mistakes</h3>
+						<ul>
+							<li></li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>API Design is Not a Solitary Activity</h3>
+						<ul>
+							<li></li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
+						<h2>General Principles</h2>
+					</section>
+
+					<section>
+						<h3>Names Matter</h3>
+						<ul>
+							<li></li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>If It's Hard to Find Good Names, Go Back to the Drawing Board</h3>
+						<ul>
+							<li></li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>When In Doubt, Leave It Out</h3>
+						<ul>
+							<li></li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Keep APIs Free of Implementation Details</h3>
+						<ul>
+							<li></li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Documentation Matters</h3>
+						<ul>
+							<li></li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Consider Performance Consequences of API Design Decisions, But Don't Warp an API to Achieve Performance Gains</h3>
+						<ul>
+							<li></li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>APIs Must Coexist Peacefully with Platforms</h3>
+						<ul>
+							<li></li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Minimize Accessibility</h3>
+						<ul>
+							<li></li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
+						<h2>Class Design</h2>
+					</section>
+
+					<section>
+						<h3>Minimize Mutability</h3>
+						<ul>
+							<li></li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Subclass Only When Every Instance Is-An Instance of the Parent</h3>
+						<ul>
+							<li></li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Design and Document for Inheritance or Prohibit It</h3>
+						<ul>
+							<li></li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
+						<h2>Method Design</h2>
+					</section>
+					<section>
+						<h3>Don't Make the Client Do Anything the Library Could Do</h3>
+						<ul>
+							<li></li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Obey the Principle of Least Astonishment</h3>
+						<ul>
+							<li></li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Fail Fast</h3>
+						<ul>
+							<li></li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Provide Programmatic Access to All Data Available in String Form</h3>
+						<ul>
+							<li></li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Overload with Care</h3>
+						<ul>
+							<li></li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Use the Right Data Type for the Job</h3>
+						<ul>
+							<li></li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Use Consistent Parameter Ordering Across Methods</h3>
+						<ul>
+							<li></li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Avoid Long Parameter Lists</h3>
+						<ul>
+							<li></li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Avoid Return Values that Require Exception Processing</h3>
+						<ul>
+							<li></li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
+						<h2>Exception Design</h2>
+					</section>
+
+					<section>
+						<h3>Throw Exceptions Only for Exceptional Conditions</h3>
+						<ul>
+							<li></li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Throw Unchecked Exceptions Unless Clients Can Realistically Recover</h3>
+						<ul>
+							<li></li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<h3>Conclusion</h3>
+					<ul>
+						<li>Think in terms of APIs, not just code</li>
+						<li>Don't just follow these principles blindly, but don't violate them without good reason</li>
+						<li>Anticipate the need to evolve APIs over time</li>
+					</ul>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
