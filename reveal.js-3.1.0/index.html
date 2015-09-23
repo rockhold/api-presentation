@@ -42,7 +42,7 @@
 			<div class="slides">
 				<section>
 					<h1>API Design Considerations</h1>
-					<h3>A dicussion of Joshua Bloch's, "How to Design a Good API and Why it Matters"</h3>
+					<h3>A discussion of Joshua Bloch's, "How to Design a Good API and Why it Matters"</h3>
 					<p>
 						<small>Created by Brandon Rockhold / <a href="http://twitter.com/brandonrockhold" target="_blank">@brandonrockhold</a></small>
 					</p>
@@ -137,7 +137,7 @@
 									<li>...at runtime through usage of exceptions</li>
 								</ul>
 							</li>
-							<li>Examples:
+							<li>Good Examples:
 								<ul>
 									<li>Doesn't allow Object type if it requires something more specific</li>
 									<li>Doesn't permit improper execution order of methods</li>
@@ -146,11 +146,17 @@
 						</ul>
 					</section>
 
-					<!-- TODO Pick back up here... -->
 					<section>
 						<h3>Self-Documenting</h3>
 						<ul>
-							<li>Rarely requires documentation</li>
+							<li>Rarely requires usage of documentation</li>
+							<li>APIs just make sense &amp; behave as expected</li>
+							<li>Bad Examples:
+								<ul>
+									<li>Need to refer to documentation to figure out how to do anything, even if already used the API before</li>
+									<li>Need to read through all documentation to determine how things</li>
+								</ul>
+							</li>
 						</ul>
 					</section>
 				</section>
@@ -161,65 +167,57 @@
 					</section>
 
 					<section>
-						<h3>Gather API Design Requirements with Skepticism</h3>
+						<h3>Gather API Design Requirements with (Healthy) Skepticism</h3>
 						<ul>
-							<li></li>
-						</ul>
-					</section>
-
-					<section>
-						<h3>Structure Requirements as Use-Cases</h3>
-						<ul>
-							<li></li>
+							<li>Beware of requirements providing implementation solutions</li>
+							<li>Ensure that any provided solutions are the best solutions</li>
+							<li>Ensure you understand the intended use-case, not just what is being asked for in requirements</li>
 						</ul>
 					</section>
 
 					<section>
 						<h3>Early Drafts of APIs Should be Short</h3>
 						<ul>
-							<li></li>
+							<li>Create brief drafts of APIs early on and put them up for review</li>
+							<li>Ensure enough of a specification exists to allow reviews to understand purpose of API and how it would be consumed</li>
+							<li>DO NOT include implementation details in an API review</li>
 						</ul>
 					</section>
 
 					<section>
 						<h3>Code Use-Cases Against APIs Before Implementing It</h3>
 						<ul>
-							<li></li>
-						</ul>
-					</section>
-
-					<section>
-						<h3>Maintain Code for Use-Cases as API Evolves</h3>
-						<ul>
-							<li></li>
+							<li>While designing API, write code against it to ensure it reads/flows like you'd expect
+								<ul>
+									<li>Could be unit tests or source code that will be consuming API</li>
+								</ul>
+							</li>
+							<li>May prevent unnecessary implementation efforts</li>
+							<li>Update this code as API design evolves in order to prevent late surprises</li>
 						</ul>
 					</section>
 
 					<section>
 						<h3>Example Code Should be Exemplary</h3>
 						<ul>
-							<li></li>
-						</ul>
-					</section>
-
-					<section>
-						<h3>You Can't Please Everyone, So Aim to Displease Everyone Equally</h3>
-						<ul>
-							<li></li>
+							<li>If providing example code in documentation, ensure that it is well-written and defect free</li>
+							<li>Such code will likely be the basis for LOTS of use-cases that follow</li>
 						</ul>
 					</section>
 
 					<section>
 						<h3>Expect API Design Mistakes</h3>
 						<ul>
-							<li></li>
+							<li>You can't anticipate all needs of an API</li>
+							<li>Design such that it can evolve over time gracefully</li>
 						</ul>
 					</section>
 
 					<section>
 						<h3>API Design is Not a Solitary Activity</h3>
 						<ul>
-							<li></li>
+							<li>Show your designs to others to get feedback</li>
+							<li>May uncover flows you haven't considered</li>
 						</ul>
 					</section>
 				</section>
@@ -232,56 +230,70 @@
 					<section>
 						<h3>Names Matter</h3>
 						<ul>
-							<li></li>
+							<li>This CANNOT be overstated...</li>
+							<li>You MUST spend time thinking about names</li>
+							<li>Choose something initially, but be willing to evolve it over time in order to improve it (before release)</li>
 						</ul>
 					</section>
 
 					<section>
 						<h3>If It's Hard to Find Good Names, Go Back to the Drawing Board</h3>
 						<ul>
-							<li></li>
+							<li>This may be a sign that you are trying to do too much in a class or method</li>
+							<li>Consider whether logic should be extracted out into separate classes or methods; evaluate name possibilities for each if you were to do so</li>
 						</ul>
 					</section>
 
 					<section>
 						<h3>When In Doubt, Leave It Out</h3>
 						<ul>
-							<li></li>
+							<li>It's much easier to expand an API over time than to remove something</li>
+							<li>Keep API focused to ease learning and usage of it</li>
 						</ul>
 					</section>
 
 					<section>
 						<h3>Keep APIs Free of Implementation Details</h3>
 						<ul>
-							<li></li>
+							<li>Avoid leaking knowledge of one implementation into API specifications (code or documentation)</li>
+							<li>Failure to do so ties the API to that implementation and limits flexibility</li>
+							<li>Bad examples:
+								<ul>
+									<li>Adding API that is only needed for one implementation, but which could ultimately be part of that implementation itself rather than part of the API</li>
+									<li>Writing API to use implementation rather than interface</li>
+									<li>Writing an API for a view which leaks details about implementation usage of UI controls</li>
+								</ul>
+							</li>
 						</ul>
 					</section>
 
 					<section>
 						<h3>Documentation Matters</h3>
 						<ul>
-							<li></li>
-						</ul>
-					</section>
-
-					<section>
-						<h3>Consider Performance Consequences of API Design Decisions, But Don't Warp an API to Achieve Performance Gains</h3>
-						<ul>
-							<li></li>
+							<li>While APIs themselves should be written such that the need for documentation is minimized, all public APIs SHOULD be documented</li>
+							<li>If you're going to do it, do it well; quality of documentation can give a positive or negative impression regarding anticipated quality of code</li>
 						</ul>
 					</section>
 
 					<section>
 						<h3>APIs Must Coexist Peacefully with Platforms</h3>
 						<ul>
-							<li></li>
+							<li>Be consistent with platform APIs</li>
+							<li>If uplifting APIs from one platform to another, DO NOT blindly translate those APIs
+								<ul>
+									<li>What is appropriate for one language/platform may not be appropriate for another</li>
+								</ul>
+							</li>
 						</ul>
 					</section>
 
 					<section>
 						<h3>Minimize Accessibility</h3>
 						<ul>
-							<li></li>
+							<li>EVERYTHING should be as hidden as possible</li>
+							<li>Start with private and move upward ONLY if necessary</li>
+							<li>Keep classes in "internal" packages if not necessary to be consumed outside of project itself</li>
+							<li>Once it is out there, removing it may not be an option</li>
 						</ul>
 					</section>
 				</section>
@@ -294,21 +306,32 @@
 					<section>
 						<h3>Minimize Mutability</h3>
 						<ul>
-							<li></li>
+							<li>Mutable state leads to complexity and bugs</li>
+							<li>Keep things immutable if possible</li>
+							<li>If it makes sense to be mutable, though, don't force consumers to create new instances just so they can update one or two fields
+								<ul>
+									<li>If necessary, provide a copy constructor to ease the process of creating a new instance from an immutable object</li>
+								</ul>
+							</li>
 						</ul>
 					</section>
 
 					<section>
 						<h3>Subclass Only When Every Instance Is-An Instance of the Parent</h3>
 						<ul>
-							<li></li>
+							<li>Overuse of inheritance can lead to brittle, confusing code</li>
+							<li>Do not use inheritance purely for reuse of implementation code</li>
+							<li>Consider composition as an alternative to inheritance</li>
 						</ul>
 					</section>
 
 					<section>
 						<h3>Design and Document for Inheritance or Prohibit It</h3>
 						<ul>
-							<li></li>
+							<li>Described as "controversial" by Joshua...</li>
+							<li>If not intending for a class to be subclassed, can make it final in order to prevent it</li>
+							<li>May be particularly important if some aspect of the class' implementation would make inheritance difficult to do successfully</li>
+							<li>Doing so may make testing more difficult if creating mock implementations in tests, so keep this in mind</li>
 						</ul>
 					</section>
 				</section>
@@ -320,63 +343,78 @@
 					<section>
 						<h3>Don't Make the Client Do Anything the Library Could Do</h3>
 						<ul>
-							<li></li>
+							<li>Reduce the need for boilerplate code, which is prone to copy &amp; paste mistakes</li>
+							<li>Provide APIs for performing common actions, or retrieving commonly useful data, in order to prevent weird or tedious calls to retrieve desired data</li>
 						</ul>
 					</section>
 
 					<section>
 						<h3>Obey the Principle of Least Astonishment</h3>
 						<ul>
-							<li></li>
+							<li>Don't surprise your users!!!</li>
+							<li>Bad example:
+								<ul>
+									<li>Providing a 'get...' method which ultimately causes some internal state to be modified</li>
+								</ul>
+							</li>
 						</ul>
 					</section>
 
 					<section>
 						<h3>Fail Fast</h3>
 						<ul>
-							<li></li>
-						</ul>
-					</section>
-
-					<section>
-						<h3>Provide Programmatic Access to All Data Available in String Form</h3>
-						<ul>
-							<li></li>
+							<li>Notify of failures as soon as possible
+							<li>Compile time failures are best (with static typing and generics)</li>
+							<li>If runtime failures, don't fail silently at the point of the problem and then allow things to blow up downstream in unpredictable ways</li>
 						</ul>
 					</section>
 
 					<section>
 						<h3>Overload with Care</h3>
 						<ul>
-							<li></li>
+							<li>Avoid ambiguous overloadings with same arg types but different orders</li>
+							<li>Avoid overloaded methods which have suprisingly different behaviors</li>
+							<li>Bad example:
+								<ul>
+									<li>An overloaded API to reject param values if null, but where one implementation throws an IllegalArgumentException while another prints to a console (or throws some other undocumented exception)</li>
+								</ul>
+							</li>
 						</ul>
 					</section>
 
 					<section>
 						<h3>Use the Right Data Type for the Job</h3>
 						<ul>
-							<li></li>
+							<li>Avoid Strings if there can be a stronger type</li>
+							<li>Avoid using primitives where enums are more appropriate</li>
+							<li>Consider mutability of data type</li> 
 						</ul>
 					</section>
 
 					<section>
 						<h3>Use Consistent Parameter Ordering Across Methods</h3>
 						<ul>
-							<li></li>
+							<li>Inconsistent ordering will lead to errors, especially if parameters are of the same type</li>
 						</ul>
 					</section>
 
 					<section>
 						<h3>Avoid Long Parameter Lists</h3>
 						<ul>
-							<li></li>
+							<li>Difficult to use</li>
+							<li>If parameters are of the same type in a long list, someone will definitely get them wrong at some point</li>
 						</ul>
 					</section>
 
 					<section>
 						<h3>Avoid Return Values that Require Exception Processing</h3>
 						<ul>
-							<li></li>
+							<li>Avoid returning null values for collections or arrays
+								<ul>
+									<li>Use empty collections/arrays instead</li>
+								</ul>
+							</li>
+							<li>Consumers WILL forget to code for those special cases, and it WILL lead to bugs</li>
 						</ul>
 					</section>
 				</section>
@@ -389,14 +427,21 @@
 					<section>
 						<h3>Throw Exceptions Only for Exceptional Conditions</h3>
 						<ul>
-							<li></li>
+							<li>Do not use exceptions for normal flows</li>
+							<li>Bad example:
+								<ul>
+									<li>Throwing an exception when reaching the end of some processing or iteration logic to signal completion and the need for further actions (such as closing files or disposing of other resources)</li>
+								</ul>
+							</li>
 						</ul>
 					</section>
 
 					<section>
-						<h3>Throw Unchecked Exceptions Unless Clients Can Realistically Recover</h3>
+						<h3>Throw Unchecked Exceptions (Always?)</h3>
 						<ul>
-							<li></li>
+							<li>Joshua Bloch recommends (at the time of this presentation) using checked exceptions for scenarios where clients can recover</li>
+							<li>Other experts in the community have moved away from checked exceptions entirely</li>
+							<li>Internally, we have moved to using only unchecked exceptions, but utilizing the throws clause (as well as exception documentation) to help distinguish unchecked exceptions that indicate programmer error versus recoverable situations</li>
 						</ul>
 					</section>
 				</section>
